@@ -6,7 +6,10 @@ import postRoutes from "./routes/posts.js"
 
 import cookieParser from "cookie-parser"
 
+<<<<<<< HEAD
 import multer from "multer";
+=======
+>>>>>>> 76de28b6a886826d28e91de659c9e57284d21b09
 const app = express()
 
 app.use(express.json())//without this we can't sen data to database
@@ -14,6 +17,7 @@ app.use(express.json())//without this we can't sen data to database
 
 app.use(cookieParser())//middleware for handling cookies.
 
+<<<<<<< HEAD
 const storage = multer.diskStorage({
     destination: function (req, file, cb){
         cb(null, '../client/public/upload')
@@ -38,12 +42,17 @@ app.post('/api/upload', upload.single('file'), function(req, res){
     const file = req.file;
     res.status(200).json(file.filename)  
 })
+=======
+>>>>>>> 76de28b6a886826d28e91de659c9e57284d21b09
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/posts", postRoutes)
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 76de28b6a886826d28e91de659c9e57284d21b09
 app.listen(8000, () => {
     console.log("Connected");
 })

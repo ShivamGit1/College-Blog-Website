@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { db } from "../db.js"
 
 import  jwt  from "jsonwebtoken";
@@ -189,4 +190,8 @@ export const updatePost = async (req, res) => {
             return res.json("Post has been Updated!")
         })
     })
+=======
+export const addPost = (req, res) =>{
+    res.json("from controller")
+>>>>>>> 76de28b6a886826d28e91de659c9e57284d21b09
 }
