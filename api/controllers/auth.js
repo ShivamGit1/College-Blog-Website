@@ -45,17 +45,21 @@ export const login = (req, res) => {
         const isPasswordCorrect = bcrypt.compareSync(req.body.password, data[0].password);
         
         if (!isPasswordCorrect)
-            return res.ststus(400).json("Wrong username or password!");
+            return res.status(400).json("Wrong username or password!");
 
         const token = jwt.sign({id:data[0].id}, "jwtkey"); // we can use any random security key inplace of jwtkey
         
-        const {password, ...other}=data[0]
-        res.cookie("acces_token", token, {
-            httpOnly: true
+        const {password, ...other}=data[0]//separate password and other values
+        res.cookie("access_token", token, {
+            httpOnly: true// it means any scripts in this brower and this appln can't reach to cookie directly
         }).status(200).json(other)
     
     })
 }
 export const logout = (req, res) => {
 
+    res.clearCookie("access_token", {
+       sameSite: "none",
+       secure:true
+    }).status(200).json("Logout Successful.")
 }
